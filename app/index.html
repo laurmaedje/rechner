@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rechner</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    </head>
+    <body>
+        <!-- Eingabe -->
+        <div id="io">
+            <div id="inputwrap" class="iofield">
+                <span id="input"></span>
+            </div>
+            <!-- Ausgabe -->
+            <div id="output" class="iofield">
+                0
+            </div>
+        </div>
+        <!-- Tasten -->
+        <table id="keyboard">
+            <tr>
+                <th func="sqrt(">sqrt</th>
+                <th func="sin(">sin</th>
+                <th func="cos(">cos</th>
+                <th func="tan(">tan</th>
+                <th func="ln(">ln</th>
+            </tr>
+            <tr>
+                <th func="_inv"><i class="material-icons">flip_to_front</i></th>
+                <th func="_parens">(...)</th>
+                <th func="(">(</th>
+                <th func=")">)</th>
+                <th func="_delete"><i class="material-icons">delete</i></th>
+            </tr>
+            <tr>
+                <th func="+">+</th>
+                <th func="1">1</th>
+                <th func="2">2</th>
+                <th func="3">3</th>
+                <th func="_backspace"><i class="material-icons">backspace</i></th>
+            </tr>
+            <tr>
+                <th func="-">-</th>
+                <th func="4">4</th>
+                <th func="5">5</th>
+                <th func="6">6</th>
+                <th func="pi">&pi;</th>
+            </tr>
+            <tr>
+                <th func="*">&times;</th>
+                <th func="7">7</th>
+                <th func="8">8</th>
+                <th func="9">9</th>
+                <th func="e">e</th>
+            </tr>
+            <tr>
+                <th func="/">&divide;</th>
+                <th func="^">^</th>
+                <th func="0">0</th>
+                <th func=".">.</th>
+                <th id="enter" func="_calc">=</th>
+            </tr>
+        </table>
+    </body>
+
+    <script>
+        require('./renderer.js')
+    </script>
+</html>

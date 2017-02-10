@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+#io {
+    width: 100%;
+    height: 30%;
+}
+
+.iofield {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444444;
+    width: calc(100% - 40px);
+    height: calc(50% - 40px); 
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+#inputwrap {
+    overflow: hidden;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#input {
+    float: right;
+    white-space: nowrap;
+}
+
+#output {
+    text-align: right;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#keyboard {
+    width: 100%;
+    height: 70%;
+}
+
+table .material-icons {
+    font-size: 18px;
+}
+
+th {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 20%;
+    height: 16.66%;
+    background: #dddddd;
+}
+
+th:hover {
+    background: #d1d1d1;
+    cursor: pointer;
+}
+
+th:active {
+    background: #a8a8a8;
+}
+
+
+#enter {
+    background: #42c8f4;
+}
+
+#enter:hover {
+    background: #3bb3db;
+}
+
+#enter:active {
+    background: #339cbf;   
+}

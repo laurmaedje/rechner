@@ -1,0 +1,14 @@
+{
+  "name": "rechner",
+  "version": "0.1.0",
+  "description": "calculator app ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "author": "Laurenz Mädje <laurmaedje@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.15"
+  }
+}
