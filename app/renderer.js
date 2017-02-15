@@ -1,5 +1,5 @@
 const electron = require('electron')
-const {ipcRenderer} = electron
+const {remote} = electron
 
 document.getElementById('input').realtext = ''
 
@@ -90,5 +90,10 @@ function calc(str) {
     str = str.replace('÷', '/')
     str = str.replace('π', 'pi')
 
-    return 10
+    result = remote.getGlobal('evaluate')(str);
+    if (result == null) {
+        return 'Error'
+    } else {
+        return result.toString()
+    }
 }
