@@ -44,6 +44,16 @@ table .material-icons {
     font-size: 18px;
 }
 
+img {
+    height: 17px;
+    widows: 17px;
+}
+
+img .big_icon {
+    height: 15px;
+    white-space: 15px;
+}
+
 th {
     font-family: Arial, Helvetica, sans-serif;
     width: 20%;

@@ -82,13 +82,20 @@ function writeText(str) {
     input.textContent += str
 
     input.textContent = input.textContent.replace('pi', 'π')
+
+    intermediate_result = calc(input.textContent)
+    if (intermediate_result != 'Error') {
+        output.textContent = intermediate_result
+    }
 }
 
 // Calculate
 function calc(str) {
-    str = str.replace('×', '*')
-    str = str.replace('÷', '/')
-    str = str.replace('π', 'pi')
+    str = str.replace(/×/g, '*')
+    str = str.replace(/÷/g, '/')
+    str = str.replace(/π/g, 'pi')
+
+    console.log(str)
 
     result = remote.getGlobal('evaluate')(str);
     if (result == null) {
