@@ -4,7 +4,8 @@
   "description": "calculator app ",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "package": "electron-packager . --icon=Calculator.ico --asar --out=build --overwrite"
   },
   "author": "Laurenz Mädje <laurmaedje@gmail.com>",
   "license": "MIT",
