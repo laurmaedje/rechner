@@ -54,7 +54,8 @@ function performOperation(func) {
             break
         case '_backspace':
             input.textContent = input.textContent.trim()                                 
-            input.textContent = input.textContent.slice(0,-1)                            
+            input.textContent = input.textContent.slice(0,-1)  
+            input.textContent = input.textContent.trim()                                                                       
             break
         case '_inv':
             console.log('inverse buttons')        
