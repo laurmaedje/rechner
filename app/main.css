@@ -58,7 +58,7 @@ th {
     font-family: Arial, Helvetica, sans-serif;
     width: 20%;
     height: 16.66%;
-    background: #dddddd;
+    background: #ffffff;
 }
 
 th:hover {
@@ -72,13 +72,13 @@ th:active {
 
 
 #enter {
-    background: #42c8f4;
+    background: #67c8fc;
 }
 
 #enter:hover {
-    background: #3bb3db;
+    background: #56b1e2;
 }
 
 #enter:active {
-    background: #339cbf;   
+    background: #4797c1;   
 }

@@ -33,8 +33,11 @@ window.addEventListener('keydown', (event) => {
             performOperation('_calc')
             break
         default:
-            if (key.length === 1 && key.match(/^[,a-z0-9\^*/\)\(+=.-]+$/i)) {
+            if (key.length === 1 && key.match(/^[,a-z0-9\*/\)\(+=.-]+$/i)) {
                 writeText(key)
+            }
+            if (event.keyCode == 220) {
+                writeText('^')
             }
             break
     }
@@ -63,6 +66,8 @@ function performOperation(func) {
             output.textContent = calc(input.textContent)
             break
     }
+
+    try_calc(input.textContent)
 }
 
 // Key
@@ -83,7 +88,11 @@ function writeText(str) {
 
     input.textContent = input.textContent.replace('pi', 'π')
 
-    intermediate_result = calc(input.textContent)
+    try_calc(input.textContent)    
+}
+
+function try_calc(str) {
+    intermediate_result = calc(str)
     if (intermediate_result != 'Error') {
         output.textContent = intermediate_result
     }
@@ -94,8 +103,6 @@ function calc(str) {
     str = str.replace(/×/g, '*')
     str = str.replace(/÷/g, '/')
     str = str.replace(/π/g, 'pi')
-
-    console.log(str)
 
     result = remote.getGlobal('evaluate')(str);
     if (result == null) {
