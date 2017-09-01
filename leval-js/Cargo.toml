@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["Laurenz"]
 
 [dependencies]
-leval = { path = '../../../Rust/leval' }
+leval = { git = 'https://github.com/laurmaedje/leval' }

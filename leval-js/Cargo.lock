@@ -2,10 +2,13 @@
 name = "leval-js"
 version = "0.1.0"
 dependencies = [
- "leval 0.1.0",
+ "leval 0.1.0 (git+https://github.com/laurmaedje/leval)",
 ]
 
 [[package]]
 name = "leval"
 version = "0.1.0"
+source = "git+https://github.com/laurmaedje/leval#fae9dffe44deb2b78660a773697200b911086d35"
 
+[metadata]
+"checksum leval 0.1.0 (git+https://github.com/laurmaedje/leval)" = "<none>"

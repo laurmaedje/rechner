@@ -1,7 +1,7 @@
 const electron = require('electron')
 const {app, BrowserWindow, ipcMain} = electron
 
-var leval = require('./leval-js/target/asmjs-unknown-emscripten/release/leval-js')
+var leval = require('app/leval-js')
 global.evaluate = leval.cwrap('evaluate', 'number', ['string'])
 
 let window

@@ -71,6 +71,7 @@ function performOperation(func) {
     }
 }
 
+// Update text from token list
 function setText() {
     str = ""
     for (token of tokens) {
@@ -82,6 +83,7 @@ function setText() {
     input.textContent = str
 }
 
+// Call Rust calc method
 function calc(writeError) {
     str = ""
     for (token of tokens) {
