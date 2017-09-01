@@ -22,6 +22,12 @@ app.on('ready', () => {
 
 })
 
+app.on('closed', () => {
+    window = null
+})
+
 app.on('window-all-closed', () => {
-    app.quit()
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
 })

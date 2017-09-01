@@ -37,9 +37,9 @@ window.addEventListener('keydown', (event) => {
             performOperation('_calc')
             break
         default:
-            if (key.length === 1 && key.match(/^[,sctlr0-9\*/\)\(+=.-]+$/i)) {
+            if (key.length === 1 && key.match(/^[,pesctlr0-9\*/\)\(+=.-]+$/i)) {
                 text = key.replace('s', 'sin(').replace('c', 'cos(').replace('t', 'tan(')
-                          .replace('l', 'ln(').replace('r', 'sqrt(')
+                          .replace('l', 'ln(').replace('r', 'sqrt(').replace('p', 'pi')
 
                 tokens.push(text)
             }
