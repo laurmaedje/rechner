@@ -1,7 +1,9 @@
 const electron = require('electron')
-const {remote} = electron
+const { remote } = electron
 
-document.getElementById('input').realtext = ''
+let input = document.getElementById('input')    
+let output = document.getElementById('output')    
+let tokens = []
 
 // All Buttons
 buttons = document.querySelectorAll('th')
@@ -12,12 +14,14 @@ for (i = 0; i < buttons.length; i++) {
 
 // Button Callbacks
 function prepareButton(button, func) {
-    button.addEventListener('click', () => {       
+    button.addEventListener('click', () => {
         if (func[0] != '_') {
-            writeText(func)
+            tokens.push(func)
         } else {
             performOperation(func)
         }
+        setText()
+        calc(false)
     })
 }
 
@@ -25,7 +29,7 @@ function prepareButton(button, func) {
 window.addEventListener('keydown', (event) => {
     key = event.key
 
-    switch(key) {
+    switch (key) {
         case 'Backspace':
             performOperation('_backspace')
             break
@@ -33,82 +37,61 @@ window.addEventListener('keydown', (event) => {
             performOperation('_calc')
             break
         default:
-            if (key.length === 1 && key.match(/^[,a-z0-9\*/\)\(+=.-]+$/i)) {
-                writeText(key)
+            if (key.length === 1 && key.match(/^[,sctlr0-9\*/\)\(+=.-]+$/i)) {
+                text = key.replace('s', 'sin(').replace('c', 'cos(').replace('t', 'tan(')
+                          .replace('l', 'ln(').replace('r', 'sqrt(')
+
+                tokens.push(text)
             }
             if (event.keyCode == 220) {
-                writeText('^')
+                tokens.push('^')
             }
-            break
     }
+
+    setText()
+    calc(false)
 })
 
 // Operation 
 function performOperation(func) {
-    input = document.getElementById('input')
-    output =  document.getElementById('output')
-    switch(func) {
+    switch (func) {
         case '_delete':
-            input.textContent = ''
+            tokens = []
             output.textContent = '0'
             break
         case '_backspace':
-            input.textContent = input.textContent.trim()                                 
-            input.textContent = input.textContent.slice(0,-1)  
-            input.textContent = input.textContent.trim()                                                                       
-            break
-        case '_inv':
-            console.log('inverse buttons')        
+            tokens.pop()
             break
         case '_parens':
-            input.textContent = '(' + input.textContent + ')'
+            tokens = (['('].concat(tokens)).concat([')'])
             break
         case '_calc':
-            output.textContent = calc(input.textContent)
+            calc(true)
             break
     }
-
-    try_calc(input.textContent)
 }
 
-// Key
-function writeText(str) {
-    input = document.getElementById('input')    
-
-    if (str.match(/[A-Z]/)) {
-        str = str.toLowerCase()
+function setText() {
+    str = ""
+    for (token of tokens) {
+        tokstr = token.replace('pi', 'π').replace('*', ' × ').replace('/', ' ÷ ')
+            .replace('+', ' + ').replace('-', ' - ')
+        str += tokstr
     }
 
-    str = str.replace('*', ' × ')
-    str = str.replace('/', ' ÷ ')
-    str = str.replace('+', ' + ')
-    str = str.replace('-', ' - ')
-    str = str.replace(',', '.')
-    
-    input.textContent += str
-
-    input.textContent = input.textContent.replace('pi', 'π')
-
-    try_calc(input.textContent)    
+    input.textContent = str
 }
 
-function try_calc(str) {
-    intermediate_result = calc(str)
-    if (intermediate_result != 'Error') {
-        output.textContent = intermediate_result
+function calc(writeError) {
+    str = ""
+    for (token of tokens) {
+        str += token
     }
-}
-
-// Calculate
-function calc(str) {
-    str = str.replace(/×/g, '*')
-    str = str.replace(/÷/g, '/')
-    str = str.replace(/π/g, 'pi')
 
     result = remote.getGlobal('evaluate')(str);
-    if (result == null) {
-        return 'Error'
+    if (result == null && writeError) {
+        output.textContent = 'Error'
     } else {
-        return result.toString()
+        output.textContent = result.toString()
     }
 }
