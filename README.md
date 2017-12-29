@@ -10,9 +10,11 @@ so ist does not need to be recompiled when building.
 
 Just clone the repository and run
 ```
+cd rechner
+npm install
 npm run package
 ```
-This will create a directory `build`,
+This will create a directory `build`, 
 where inside another folder (depending on your target architecture) is the packaged app.
 
 [leval]: http://github.com/laurmaedje/leval
